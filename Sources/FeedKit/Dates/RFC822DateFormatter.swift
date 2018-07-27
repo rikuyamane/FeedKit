@@ -60,7 +60,7 @@ class RFC822DateFormatter: DateFormatter {
     }
     
     override func date(from string: String) -> Date? {
-        let string = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        let string = string.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "JST", with: "+0900")
         if let parsedDate = attemptParsing(from: string, formats: dateFormats) {
             return parsedDate
         }
